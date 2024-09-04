@@ -15,7 +15,7 @@ export const WordleBlank = styled.input`
   font-size: 1.5em;
   width: 2em;
   height: 2.5em;
-  border: 1px solid #000;
+  border: 1px solid #fff;
   line-height: 2.5em;
   font-family: Pretendard-Regular;
   border-radius: 0.5em;
@@ -23,4 +23,5 @@ export const WordleBlank = styled.input`
   margin: 0.3rem;
   background: none;
   cursor: pointer;
+  color: #fff;
 `;

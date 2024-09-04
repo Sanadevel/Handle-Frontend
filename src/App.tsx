@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import WordleBlank from "./components/wordleBlank";
 import { wordleInputTypeArr } from "./types/wordleInput";
 import Keyboard from "./components/keyboard";
@@ -11,14 +11,13 @@ function App() {
     arr: [],
     curIdx: 0,
   });
-  const correctAwnser: wordleInputTypeArr = {
+  const [correctAwnser, setCorrectAwnser] = useState<wordleInputTypeArr>({
     arr: hangul.d(exCorrect),
     curIdx: 0,
-  };
-  /* const [awnserWordle, setAwnserWordle] = useState<awnserWordleType>({
-    arr: [],
-  }); */
+  });
+  const [changeWord, setChangeWord] = useState("");
   const wordleLength = inputWordle.arr.length;
+  const ref = useRef(null);
 
   useEffect(() => {
     setInputWordle({
@@ -33,10 +32,14 @@ function App() {
 
     if (inputValue === "입력" && inputWordle.curIdx === wordleLength) {
       const _res = checkWordle({
-        awnser: inputWordle.arr,
+        awnser: newArr,
         correct: correctAwnser.arr,
       });
-      console.log(_res);
+      setInputWordle({
+        arr: newArr,
+        curIdx: inputWordle.curIdx,
+        result: _res,
+      });
     } else if (inputValue === "지움" && inputWordle.curIdx > 0) {
       newArr[inputWordle.curIdx - 1] = "";
       setInputWordle({ arr: newArr, curIdx: inputWordle.curIdx - 1 });
@@ -52,10 +55,45 @@ function App() {
 
   return (
     <div className="App">
-      <WordleBlank inputWordle={correctAwnser} />
-      <WordleBlank inputWordle={inputWordle} />
-      <Keyboard changeWordle={changeWordle} />
-      <div>arr : {inputWordle?.arr.length}</div>
+      <input
+        type="text"
+        value={changeWord}
+        onChange={(e) => setChangeWord(e.target.value.replaceAll(" ", ""))}
+      />
+      <div ref={ref} onKeyDown={(e) => console.log(e.key)}>
+        <button
+          onClick={() => {
+            setCorrectAwnser({ arr: hangul.d(changeWord), curIdx: 0 });
+            setChangeWord("");
+          }}
+        >
+          변경
+        </button>
+        <WordleBlank inputWordle={correctAwnser} />
+        <WordleBlank inputWordle={inputWordle} />
+        <Keyboard changeWordle={changeWordle} />
+        <div>arr : {wordleLength}</div>
+        <div>index : {inputWordle?.curIdx}</div>
+        <input
+          type="text"
+          onChange={(e) => {
+            setInputWordle({
+              arr: hangul.d(e.target.value),
+              curIdx: hangul.d(e.target.value).length,
+            });
+          }}
+        />
+        <button
+          onClick={() => {
+            setInputWordle({
+              arr: new Array(correctAwnser.arr.length).fill(""),
+              curIdx: 0,
+            });
+          }}
+        >
+          초기화
+        </button>
+      </div>
     </div>
   );
 }
