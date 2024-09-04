@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
+const colors = {
+  green: "#6AAA64",
+  yellow: "#D1B036",
+};
+
 export const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: "Pretendard-Regular";
@@ -9,7 +14,12 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
 }
 
+:root{
+  background-color: #000;
+  color:#fff;
+  --primary-green-color : #6AAA64
+  --primary-yellow-color : #D1B036
+}
+
 font-size: 16px;
-
-
 `;
