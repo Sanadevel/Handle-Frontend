@@ -67,6 +67,7 @@ export const SCS = styled.div`
     animation-fill-mode: forwards;
     animation-play-state: running;
     animation-fill-mode: forwards;
+    z-index: 1;
   }
 
   &.notComp {
