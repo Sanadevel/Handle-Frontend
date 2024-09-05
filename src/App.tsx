@@ -59,7 +59,7 @@ function App() {
           ) {
             setPrevInputWordle([]);
             setInputWordle({
-              arr: [],
+              arr: new Array(wordleLength).fill(""),
               curIdx: 0,
             });
           } else {
