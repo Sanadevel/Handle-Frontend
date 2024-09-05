@@ -8,7 +8,7 @@ export const WordleBlanks = styled.div`
   width: 60em;
   display: flex;
   justify-content: center;
-  margin-bottom: 3em;
+  margin-bottom: 0.5rem;
 `;
 
 export const WordleBlank = styled.div<wordleBlankInterface>`
@@ -28,5 +28,9 @@ export const WordleBlank = styled.div<wordleBlankInterface>`
   }
   &.OO {
     background-color: #6aaa64;
+  }
+  &.X {
+    background-color: #fff;
+    color: #000;
   }
 `;
