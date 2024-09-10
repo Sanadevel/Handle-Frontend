@@ -1,4 +1,4 @@
-import { wordleInputTypeArr } from "../../types/wordleInput";
+import { wordleInputTypeArr } from "../../../types/wordleInput";
 import * as S from "./style";
 
 const WordleBlank = ({ inputWordle }: { inputWordle: wordleInputTypeArr }) => {
