@@ -5,6 +5,8 @@ interface InputTextInterface {
   height?: number;
   fontSize?: number;
   placeholder?: string;
+  onChange?: Function;
+  value?: unknown;
 }
 
 export const InputTextStyle = styled.input<InputTextInterface>`
@@ -24,6 +26,8 @@ const InputText = ({
   width,
   height,
   placeholder,
+  onChange,
+  value,
 }: InputTextInterface) => {
   return (
     <InputTextStyle
@@ -31,6 +35,8 @@ const InputText = ({
       width={width}
       height={height}
       placeholder={placeholder}
+      onChange={onChange}
+      value={value}
     />
   );
 };
