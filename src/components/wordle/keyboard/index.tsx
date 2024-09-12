@@ -1,4 +1,4 @@
-import { keyBoardWords } from "../../stores/constants/keyBoardConstant";
+import { keyBoardWords } from "../../../stores/constants/keyBoardConstant";
 import * as S from "./style";
 
 interface keyboardInterface {
